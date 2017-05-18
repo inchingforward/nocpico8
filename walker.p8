@@ -9,17 +9,11 @@ walker.x = 62
 walker.y = 62
 
 function step()
-  local choice = flr(rnd(4))
+  local stepx = flr(rnd(3)) - 1
+  local stepy = flr(rnd(3)) - 1
 
-  if choice == 0 then
-    walker.x += 1
-  elseif choice == 1 then
-    walker.x -= 1
-  elseif choice == 2 then
-    walker.y += 1
-  else
-    walker.y -= 1
-  end
+  walker.x += stepx
+  walker.y += stepy
 end
 
 function _update()
