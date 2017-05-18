@@ -1,12 +1,33 @@
 pico-8 cartridge // http://www.pico-8.com
 version 8
 __lua__
+-- a random walker from 
+-- the nature of code
+
 walker = {}
-walker.x = 0
-walker.y = 0
+walker.x = 62
+walker.y = 62
+
+function step()
+  local choice = flr(rnd(4))
+
+  if choice == 0 then
+    walker.x += 1
+  elseif choice == 1 then
+    walker.x -= 1
+  elseif choice == 2 then
+    walker.y += 1
+  else
+    walker.y -= 1
+  end
+end
+
+function _update()
+  step()
+end
 
 function _draw()
-  spr(0, walker.x, walker.y)
+  pset(walker.x, walker.y, 6)  -- 6 = light gray
 end
 
 cls()
