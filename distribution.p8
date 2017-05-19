@@ -2,7 +2,35 @@ pico-8 cartridge // http://www.pico-8.com
 version 8
 __lua__
 -- example 1.2 from the nature of code
-print "not yet implemented"
+RectangleWidth = 6
+randomCounts = {}
+
+function _init()
+  print("init")
+  for i = 1, 20 do
+    randomCounts[i] = 0
+  end
+end
+
+function _update()
+  index = flr(rnd(#randomCounts)) + 1
+  randomCounts[index] += 1
+end
+
+function _draw() 
+  cls()
+  
+  color(6) -- light gray
+
+  for i=1, #randomCounts do
+    x = (i - 1) * RectangleWidth
+    y = randomCounts[i]
+
+    rect(x, 127 - y, x + RectangleWidth, 127)
+  end
+
+  print("distribution", 37, 20, 10) --yellow
+end
 __gfx__
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
